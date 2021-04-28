@@ -1,0 +1,66 @@
+/*Heres a sample of a C++ program I wrote to enter the following information for 10 Employees:nameDOBidhoursrateFind the salary,Hours less than or equal 40, salary is:Hours*rateHours greater than 40, salary is:(hours-40) * 1.5 + (Hours*rate)and then display the information:*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+const int SIZE=2;
+struct Date{
+int month, day, year;
+};
+struct Employee{
+string name;
+Date dob;
+int id,hours;
+float rate;
+};
+void
+enter_employee_info(Employee&);
+doublefind_employee_salary(Employee);
+void
+display_all_employees_info(Employee[]);
+int main(){ // local var
+Employee employees[SIZE];
+//code
+for(inti=0; i<SIZE ; i++)
+{
+enter_employee_info(employees[i]);
+cin.ignore();
+}
+cout.setf(ios::fixed);
+cout.setf(ios::showpoint);
+cout.precision(4);
+
+for(inti=0; i<SIZE ; i++)
+cout<<"The salary for: "<<employees[i].name<<" is: "<<find_employee_salary(employees[i])<<endl;
+display_all_employees_info(employees);
+system("pause");
+return0;
+}
+void
+enter_employee_info(Employee& emp){//local var
+char sp;
+cout<<"Enter Employee's Name: ";
+getline(cin,emp.name);
+cout<<"Enter Employee's DOB (mm/dd/yyyy): ";
+cin>>emp.dob.month>>sp>>emp.dob.day>>sp>>emp.dob.year;
+cout<<"Enter Employee's ID: ";cin>>emp.id;
+cout<<"Enter Employee's Hours: ";
+cin>>emp.hours;cout<<"Enter Employee's Rate: ";
+cin>>emp.rate;return;
+}
+doublefind_employee_salary(Employeeemp)
+{
+if(emp.hours <= 40)returnemp.rate * emp.hours;
+else return(emp.hours-40) * 1.5 + (emp.hours * emp.rate);
+}
+void
+display_all_employees_info(Employeeemps[])
+{
+for(inti=0 ; i< SIZE; i++) {
+cout<<"Name: "<<emps[i].name<<endl;
+cout<<"ID: "<<emps[i].id<<endl;
+cout<<"DOB: "<<emps[i].dob.month<<"/"<<emps[i].dob.day<<"/"<<emps[i].dob.year<<endl;
+cout<<"Hours: "<<emps[i].hours<<endl;cout<<"Rate: "<<emps[i].rate<<endl;cout<<"Salary: "<<find_employee_salary(emps[i])<<endl;
+}
+return;
+}
